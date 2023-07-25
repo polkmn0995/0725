@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>윈도우 객체 속성 예제</title>
+  </head>
+  <body>
+    <h1>윈도우 객체 속성 예제</h1>
+    <button onclick="createWindow()">윈도우 생성</button>
+    <button onclick="closeWindow()">윈도우 닫기</button>
+    <script>
+      let newWindow;
+      function createWindow() {
+        // 윈도우 객체 생성
+        newWindow = window.open("", "", "width=400", "height=300");
+        // 윈도우 객체 속성 설정
+        newWindow.document.title = "새로 생성된 윈도우 창";
+        newWindow.document.body.style.backgroundColor = "lightblue";
+        newWindow.document.body.innerHTML =
+          "<h2>새로 생성된 윈도우 창 내용<h2>";
+        // 윈도우 크기 조절 가능 여부 설정
+        newWindow.resizeble = "no";
+        // 윈도우 닫기 버튼 클릭시 호출되는 함수 설정
+        newWindow.onbeforeunload = function () {
+          console.log("윈도우가 닫힙니다");
+        };
+      }
+      function closeWindow() {
+        if (newWindow) {
+          newWindow.close();
+        }
+      }
+    </script>
+  </body>
+</html>
